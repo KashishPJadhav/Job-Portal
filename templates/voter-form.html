@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="voterForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" required></textarea>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female" required> Female
+
+        <!-- Aadhaar Card Number Field -->
+        <label for="aadhaar">Aadhaar Card Number:</label>
+        <input type="text" id="aadhaar" maxlength="12" required pattern="\d{12}" title="Aadhaar card number must be a 12-digit number">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
