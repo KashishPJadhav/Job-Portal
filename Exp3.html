@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DKTE Ichalkaranji Job Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-section {
+            background-color: white;
+            color: black;
+            width: 60%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-section {
+            background-color: #243D91;
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right-section img {
+            width: 200px;
+        }
+
+        .featured-jobs {
+            margin-top: 20px;
+        }
+
+        .featured-jobs h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .job-listings {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .job {
+            background-color: #243D91;
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+            width: 200px;
+            text-align: center;
+        }
+
+        .job h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .job p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .job button {
+            background-color: white;
+            color: #243D91;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="left-section">
+        <h1>DKTE Placements</h1>
+        <p>One stop portal for students & companies for placements.</p>
+        
+        <section class="featured-jobs">
+            <h3>Featured Job Listings</h3>
+            <div class="job-listings">
+                <div class="job">
+                    <h4>Software Engineer</h4>
+                    <p>Company: Druva Software</p>
+                    <button>Apply Now</button>
+                </div>
+                <div class="job">
+                    <h4>Data Analyst</h4>
+                    <p>Company: Hexaware</p>
+                    <button>Apply Now</button>
+                </div>
+                <div class="job">
+                    <h4>Web Developer</h4>
+                    <p>Company: Zoho</p>
+                    <button>Apply Now</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="right-section">
+        <img src="https://tpo.dkteycp.ac.in/wp-content/uploads/2023/12/DKTE-LOGO.png" alt="DKTE Logo">
+    </div>
+</body>
+</html>
