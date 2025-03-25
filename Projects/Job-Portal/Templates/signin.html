@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DKTE Placements</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .left-panel {
+            background-color:#3546ab;
+            color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .left-panel img {
+            max-width: 220px;
+            margin-bottom: 20px;
+        }
+        .left-panel h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .left-panel p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .right-panel {
+            flex: 2;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+            color: #3546ab;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input:focus {
+            border-color: #3546ab;
+            outline: none;
+        }
+        .recaptcha {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .recaptcha input {
+            margin-right: 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .buttons a {
+            font-size: 14px;
+            text-decoration: none;
+            color: #3546ab;
+        }
+        .buttons a:hover {
+            text-decoration: underline;
+        }
+        .buttons button {
+            background-color: #3546ab;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .buttons button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .t1 {
+            background-color: #3546ab;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPjhJ83dzE3RJupu2GV1BmGVnR4zbPnaSJg&s" alt="DKTE Logo">
+            <h1>DKTE Placements</h1>
+            <p>One stop portal for students & companies for placements.</p>
+        </div>
+        <div class="right-panel">
+            <div class="form-container">
+                <h2>Sign-in to DKTE Placement Portal</h2>
+                <div class="tabs">
+                    <button class="t1">Student</button>
+                    <button class="t1">Recruiter</button>
+                    <button class="t1">Coordinator</button>
+                    <button class="t1">Verifier</button>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="roll">Roll</label>
+                        <input type="text" id="roll" placeholder="Enter your roll number">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password">
+                    </div>
+                    <div class="recaptcha">
+                        <input type="checkbox" id="recaptcha">
+                        <label for="recaptcha">I'm not a robot</label>
+                    </div>
+                    <div class="buttons">
+                        <a href="#">Forgot password?</a>
+                        <button type="submit" id="signInButton" disabled>Sign In</button>
+                    </div>
+                    <p>Don't have an account? <a href="#">Register now</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enable sign-in button when both fields are filled
+        document.addEventListener("DOMContentLoaded", function () {
+            const rollInput = document.getElementById("roll");
+            const passwordInput = document.getElementById("password");
+            const recaptcha = document.getElementById("recaptcha");
+            const signInButton = document.getElementById("signInButton");
+
+            function validateForm() {
+                if (rollInput.value.trim() !== "" && passwordInput.value.trim() !== "" && recaptcha.checked) {
+                    signInButton.removeAttribute("disabled");
+                } else {
+                    signInButton.setAttribute("disabled", "true");
+                }
+            }
+
+            rollInput.addEventListener("input", validateForm);
+            passwordInput.addEventListener("input", validateForm);
+            recaptcha.addEventListener("change", validateForm);
+        });
+    </script>
+</body>
+</html>
