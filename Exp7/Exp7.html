@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Animations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <button onclick="moveBox()">Move</button>
+        <button onclick="modifyBox()">Modify</button>
+        <button onclick="toggleBox()">Toggle</button>
+        <button onclick="fadeInText()">Fade In</button>
+    </div>
+
+    <div class="box" id="box">
+        <span class="fade-text" id="boxText">Hello!</span>
+    </div>
+
+    <script>
+        function moveBox() {
+            document.getElementById("box").classList.toggle("moved");
+        }
+
+        function modifyBox() {
+            document.getElementById("box").classList.toggle("modified");
+        }
+
+        function toggleBox() {
+            document.getElementById("box").classList.toggle("hidden");
+        }
+
+        function fadeInText() {
+            document.getElementById("boxText").classList.toggle("visible");
+        }
+    </script>
+
+</body>
+</html>
