@@ -1,9 +1,10 @@
+<!-- signup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DKTE Placements</title>
+    <title>DKTE Placements - Sign Up</title>
     <style>
         body {
             margin: 0;
@@ -15,7 +16,7 @@
             height: 100vh;
         }
         .left-panel {
-            background-color:#3546ab;
+            background-color: #3546ab;
             color: white;
             flex: 1;
             display: flex;
@@ -118,6 +119,7 @@
             font-size: 12px;
             cursor: pointer;
             border-radius: 3px;
+            margin: 0 5px;
         }
     </style>
 </head>
@@ -130,56 +132,79 @@
         </div>
         <div class="right-panel">
             <div class="form-container">
-                <h2>Sign-in to DKTE Placement Portal</h2>
+                <h2>Sign Up</h2>
                 <div class="tabs">
-                    <button class="t1">Student</button>
-                    <button class="t1">Recruiter</button>
-                    <button class="t1">Coordinator</button>
-                    <button class="t1">Verifier</button>
+                    <button class="t1" onclick="setRole('student')">Student</button>
+                    <button class="t1" onclick="setRole('recruiter')">Recruiter</button>
+                    <button class="t1" onclick="setRole('company')">Company</button>
+                    <button class="t1" onclick="setRole('verifier')">Verifier</button>
                 </div>
-                <form>
+                <form id="signupForm">
                     <div class="form-group">
-                        <label for="roll">Roll</label>
-                        <input type="text" id="roll" placeholder="Enter your roll number">
+                        <label for="idInput">ID:</label>
+                        <input type="text" id="idInput" name="idInput" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your password">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
                     </div>
                     <div class="recaptcha">
-                        <input type="checkbox" id="recaptcha">
-                        <label for="recaptcha">I'm not a robot</label>
+                        <input type="checkbox" id="recaptcha" required>
+                        <label for="recaptcha">I am not a robot</label>
                     </div>
                     <div class="buttons">
-                        <a href="#">Forgot password?</a>
-                        <button type="submit" id="signInButton" disabled>Sign In</button>
+                        <button type="submit">Sign Up</button>
                     </div>
-                    <p>Don't have an account? <a href="#">Register now</a></p>
                 </form>
             </div>
         </div>
     </div>
-
     <script>
-        // Enable sign-in button when both fields are filled
-        document.addEventListener("DOMContentLoaded", function () {
-            const rollInput = document.getElementById("roll");
-            const passwordInput = document.getElementById("password");
-            const recaptcha = document.getElementById("recaptcha");
-            const signInButton = document.getElementById("signInButton");
+        let selectedRole = 'student'; // Default role
 
-            function validateForm() {
-                if (rollInput.value.trim() !== "" && passwordInput.value.trim() !== "" && recaptcha.checked) {
-                    signInButton.removeAttribute("disabled");
-                } else {
-                    signInButton.setAttribute("disabled", "true");
-                }
+        function setRole(role) {
+            selectedRole = role;
+            const idLabel = document.querySelector('label[for="idInput"]');
+            const idInput = document.getElementById('idInput');
+
+            if (role === 'student') {
+                idLabel.textContent = 'Roll No:';
+                idInput.placeholder = 'Enter your roll number';
+            } else if (role === 'recruiter') {
+                idLabel.textContent = 'Recruiter ID:';
+                idInput.placeholder = 'Enter your recruiter ID';
+            } else if (role === 'company') {
+                idLabel.textContent = 'Company ID:';
+                idInput.placeholder = 'Enter your company ID';
+            } else if (role === 'verifier') {
+                idLabel.textContent = 'Verifier ID:';
+                idInput.placeholder = 'Enter your verifier ID';
             }
+        }
 
-            rollInput.addEventListener("input", validateForm);
-            passwordInput.addEventListener("input", validateForm);
-            recaptcha.addEventListener("change", validateForm);
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const idInput = document.getElementById('idInput').value;
+            const password = document.getElementById('password').value;
+
+            // Here you can validate the ID and password against your dataset
+            const user = users.find(user => user.id === idInput && user.password === password && user.role === selectedRole);
+
+            if (user) {
+                // Redirect to the appropriate dashboard based on the role
+                window.location.href = selectedRole === 'student' ? 'student_dashboard.html' : 'other_dashboard.html';
+            } else {
+                alert('Invalid ID or password. Please try again.');
+            }
         });
+
+        const users = [
+            { id: '22UAI036', password: 'Password123!', role: 'student' },
+            { id: 'R123', password: 'RecruiterPass!', role: 'recruiter' },
+            { id: 'C456', password: 'CompanyPass!', role: 'company' },
+            { id: 'V789', password: 'VerifierPass!', role: 'verifier' },
+            // Add more users as needed
+        ];
     </script>
 </body>
 </html>
